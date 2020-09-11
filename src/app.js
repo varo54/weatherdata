@@ -5,6 +5,7 @@ const geocode = require('./utilties/geocode.js')
 const forecast = require('./utilties/forecast.js')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 const publicDirectory = path.join(__dirname,'../public')
 const partialsDirectory = path.join(__dirname,'../views/partials')
@@ -28,7 +29,7 @@ app.get('/help',(req,res) => {
 })
 
 app.get('/about',(req,res) => {
-  res.render('about',{  
+  res.render('about',{
   title: 'About Page',
   name: 'Varo'
   })
@@ -81,8 +82,6 @@ app.get('*',(req,res) => {
   })
 })
 
-
-
-app.listen(3000, () => {
-  console.log('Server is up on port 3000')
+app.listen(port, () => {
+  console.log('Server is up on port ' + port)
 })
